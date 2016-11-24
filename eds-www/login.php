@@ -3,13 +3,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if(!empty($_POST["username"]) && !empty($_POST["password"])) {
 		$username = $_POST["username"];
 		$password = $_POST["password"];
-		$python = 'C:\\Python\Python35\\python.exe';
-		$pyscript = 'C:\\gpsServer\\login.py';
-		$cmd = "$python $pyscript $username $password";
-		exec("$cmd",$output,$retVal);
-		if($retVal == 0) {
+		// connect
+		try{
+			$m = new MongoClient();
+		} catch(MongoConnectionException $e)
+		{
+			die();
+		};
+		// select a database
+		$db = $m->gpsDB;
+		
+		// select a collection (analogous to a relational database's table)
+		$collection = $db->users;
+		$user = $collection->findOne(array('username' => $username, 'password' => $password));
+		$m->close();
+		if($user) {
 			session_start();
 			$_SESSION["authenticated"] = 'true';
+			if($user["isAdmin"])
+			{
+				$_SESSION["isAdmin"] = 'true';
+			}
+			else
+			{
+				$_SESSION["isAdmin"] = 'false';
+			}
 			header('Location: index.php');
 		}
 		else {

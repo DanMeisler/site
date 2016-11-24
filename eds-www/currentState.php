@@ -13,20 +13,16 @@
 <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
 <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
 <script type="text/javascript" charset="utf8">
-    /* Custom filtering function which will search data in column four between two values */
-    $.fn.dataTable.ext.search.push(
+    /* Custom filtering function which will search data in column 9 between two values */
+    $.fn.dataTableExt.afnFiltering.push(
         function( settings, data, dataIndex ) {
-            var min = Date.parse( $('#min').val());
-            var max = Date.parse( $('#max').val());
+            var min = new Date($('#min').val());
+            var max = new Date($('#max').val());
             var date = Date.parse( data[9] ) || 0; // use data for the date column
-
-            if ( ( isNaN( min ) && isNaN( max ) ) ||
-                 ( isNaN( min ) && date <= max ) ||
-                 ( min <= date   && isNaN( max ) ) ||
-                 ( min <= date   && date <= max ) )
-            {
-                return true;
-            }
+            if ( ( isNaN( min ) && isNaN( max ) ) || ( isNaN( min ) && date <= max ) || ( min <= date   && isNaN( max ) ) || ( min <= date   && date <= max ) )
+			{
+				return true;
+			}
             return false;
         }
     );
@@ -81,28 +77,40 @@
                     return data;
                 },
                 "targets": 0
-            }]
+            },
+			{
+				"render": function ( data, type, row ) {
+                    return data + ' V';
+                },
+                "targets": 3
+			},
+			{
+				"render": function ( data, type, row ) {
+                    return data + '°';
+                },
+                "targets": [4,5]
+			}
+			]
         });
         // Event listener to the two range filtering inputs to redraw on input
-        $('#min, #max').keyup( function() {
+        $('#min, #max').change( function() {
             table.draw();
         } );
 		setInterval( function () {
 			table.ajax.reload( null, false);
 		}, 10000 );
-		
 		});
 </script>
 <table border="0" cellspacing="5" cellpadding="5">
     <tbody>
         <tr>
             <td>
-                <input type="date" id="min" name="min" placeholder="Minimum date:">
+                <input placeholder="Start date:" type="text" id="min" onfocus="(this.type='date')" onblur="(this.type='text')">
             </td>
         </tr>
         <tr>
             <td>
-                <input type="text" id="max" name="max" placeholder="Maximum date:">
+                <input placeholder="End date:" type="text" id="max" onfocus="(this.type='date')" onblur="(this.type='text')">
             </td>
         </tr>
     </tbody>
@@ -114,10 +122,10 @@
         <tr>
             <th>Modem ID</th>
             <th>Unit ID</th>
-            <th>GPS_DATA</th>
+            <th>Gps data</th>
             <th>Bat voltage indicate</th>
-            <th>MCU_TEMPERATURE</th>
-            <th>Ex_TEMP_Sensor</th>
+            <th>Mcu temperature</th>
+            <th>Ex Temp Sensor</th>
 			<th>Latitude</th>
 			<th>Longitude</th>
 			<th>Area</th>
