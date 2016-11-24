@@ -1,0 +1,126 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<kml xmlns='http://www.opengis.net/kml/2.2'>
+	<Document>
+		<name>כלובים</name>
+		<description><![CDATA[כלובים<br>]]></description>
+		<Folder>
+			<name>מקומות</name>
+			<Placemark>
+				<name>משתלה</name>
+				<description><![CDATA[משתלה]]></description>
+				<styleUrl>#poly-009D57-1-71</styleUrl>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<tessellate>1</tessellate>
+							<coordinates>34.6190357,31.3761364,0.0 34.6205485,31.3731319,0.0 34.6264386,31.3749731,0.0 34.6249259,31.3782432,0.0 34.6190357,31.3761364,0.0</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>אייל ברדה</name>
+				<description><![CDATA[eyal barda]]></description>
+				<styleUrl>#poly-0000FF-3-115</styleUrl>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<tessellate>1</tessellate>
+							<coordinates>34.7715676,31.7803682,0.0 34.7729248,31.7791461,0.0 34.7733808,31.7795291,0.0 34.7719377,31.7807467,0.0 34.7715676,31.7803682,0.0</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>מנטין רוברטו</name>
+				<description><![CDATA[mantin roberto]]></description>
+				<styleUrl>#poly-0000FF-3-115</styleUrl>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<tessellate>1</tessellate>
+							<coordinates>34.771632,31.7778692,0.0 34.7722542,31.777322,0.0 34.772898,31.7778874,0.0 34.7724366,31.7784073,0.0 34.771632,31.7778692,0.0</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>יורם שמואל</name>
+				<description><![CDATA[yoram shmuel]]></description>
+				<styleUrl>#poly-0000FF-3-115</styleUrl>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<tessellate>1</tessellate>
+							<coordinates>34.768306,31.7752698,0.0 34.7667825,31.7739701,0.0 34.7672707,31.7735505,0.0 34.7687405,31.7748639,0.0 34.768306,31.7752698,0.0</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Style id='poly-0000FF-3-115-normal'>
+			<LineStyle>
+				<color>ffFF0000</color>
+				<width>3</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>73FF0000</color>
+				<fill>1</fill>
+				<outline>1</outline>
+			</PolyStyle>
+		</Style>
+		<Style id='poly-0000FF-3-115-highlight'>
+			<LineStyle>
+				<color>ffFF0000</color>
+				<width>5.0</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>73FF0000</color>
+				<fill>1</fill>
+				<outline>1</outline>
+			</PolyStyle>
+		</Style>
+		<StyleMap id='poly-0000FF-3-115'>
+			<Pair>
+				<key>normal</key>
+				<styleUrl>#poly-0000FF-3-115-normal</styleUrl>
+			</Pair>
+			<Pair>
+				<key>highlight</key>
+				<styleUrl>#poly-0000FF-3-115-highlight</styleUrl>
+			</Pair>
+		</StyleMap>
+		<Style id='poly-009D57-1-71-normal'>
+			<LineStyle>
+				<color>ff579D00</color>
+				<width>1</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>47579D00</color>
+				<fill>1</fill>
+				<outline>1</outline>
+			</PolyStyle>
+		</Style>
+		<Style id='poly-009D57-1-71-highlight'>
+			<LineStyle>
+				<color>ff579D00</color>
+				<width>2.0</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>47579D00</color>
+				<fill>1</fill>
+				<outline>1</outline>
+			</PolyStyle>
+		</Style>
+		<StyleMap id='poly-009D57-1-71'>
+			<Pair>
+				<key>normal</key>
+				<styleUrl>#poly-009D57-1-71-normal</styleUrl>
+			</Pair>
+			<Pair>
+				<key>highlight</key>
+				<styleUrl>#poly-009D57-1-71-highlight</styleUrl>
+			</Pair>
+		</StyleMap>
+	</Document>
+</kml>
