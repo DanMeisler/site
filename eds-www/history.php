@@ -1,8 +1,18 @@
 <?php
     require_once('authenticate.php');
 ?>
+
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css">
+<style type="text/css">
+            .gmap-button{
+				width: 100%;
+				height: 100%;
+                background: url('./sources/images/gmap.png') no-repeat center center;
+                cursor: pointer;
+                border: none;
+            }
+</style>
 <script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.12.3.js"></script>
 <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
@@ -32,6 +42,7 @@
     );
     $(document).ready( function () {
         var table = $('#history_table').DataTable({
+			"order": [[ 9, 'desc' ]],
 			"ajax": {
 				"url": "getTable.php",
 				"data": {
@@ -62,7 +73,8 @@
 			{ "data": "Latitude" },
             { "data": "Longitude" },
 			{ "data": "Area" },
-			{ "data": "Date" }],
+			{ "data": "Date" },
+			{ "data": null }],
 			"columnDefs": [
             {
                 "render": function ( data, type, row ) {
@@ -96,9 +108,18 @@
                     return data + '°';
                 },
                 "targets": [4,5]
-			}
-			]
+			},
+			{
+				"targets": -1,
+				"data": null,
+				"defaultContent": "<button class='gmap-button'></button>"
+			}]
         });
+		// Event listener for opening on google maps
+		$('#history_table tbody').on('click', 'button', function () {
+			var data = table.row( $(this).parents('tr')).data();
+			location.href = "./index.php?Lat=" + data["Latitude"] + "&Lon=" + data["Longitude"];
+		});
         // Event listener to the two range filtering inputs to redraw on input
         $('#min, #max').change( function() {
             table.draw();
@@ -138,8 +159,9 @@
 			<th>Longitude</th>
 			<th>Area</th>
 			<th>Date</th>
+			<th></th>
         </tr>
     </thead>
-</table>
+</table >
 <div style="position: fixed; width: 229px; height: 151px; bottom: 10;left: 10; background-image: url('sources/images/logo.png');">
 </div>

@@ -47,10 +47,32 @@
     function initialize() {
       var mapOptions = {
         zoom: 9,
-        center: new google.maps.LatLng(31.0461, 34.8516),
+		<?php
+		if(isset($_GET["Lat"]) && isset($_GET["Lon"]))
+		{
+			$lat = $_GET["Lat"];
+			$lon = $_GET["Lon"];
+		?>
+        center: new google.maps.LatLng(<?php echo $lat; ?>, <?php echo $lon; ?>),
+		<?php } else {?>
+		center: new google.maps.LatLng(31.0461, 34.8516),
+		<?php } ?>
       }
       map = new google.maps.Map(document.getElementById('map-canvas'),
                                     mapOptions);
+	  <?php
+		if(isset($_GET["Lat"]) && isset($_GET["Lon"]))
+		{
+			$lat = $_GET["Lat"];
+			$lon = $_GET["Lon"];
+	  ?>
+	  var myLatLng = new google.maps.LatLng(<?php echo $lat; ?>, <?php echo $lon; ?>);
+      var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map
+      });
+	  marker.setIcon('./sources/images/yellow-dot.png')
+	  <?php } ?>
 	  updateTheMarkers();
       setMarkers(map, markers);
     }
