@@ -8,7 +8,47 @@
 	var infowindow = new google.maps.InfoWindow();
     var arrMarkers = [];
     var markers = [];
-
+	
+	function renderModem(modem)
+	{
+		<?php 
+			$filename = "./sources/render/modems/uploads/modems.csv";
+			if (file_exists($filename)) {
+				$file = fopen($filename, "r");
+				while(!feof($file))
+				{
+					$line = (fgetcsv($file));
+				    if ($line)
+					{
+						echo "if(\"" . $line[0] . "\" == modem)\n\treturn \"" . $line[1] . "\";\n";
+					}	
+				}
+				fclose($file);
+			}
+		?>
+		return modem;
+	}
+	
+	function renderUnit(unit)
+	{
+		<?php 
+			$filename = "./sources/render/units/uploads/units.csv";
+			if (file_exists($filename)) {
+				$file = fopen($filename, "r");
+				while(!feof($file))
+				{
+					$line = (fgetcsv($file));
+				    if ($line)
+					{
+						echo "if(\"" . $line[0] . "\" == unit)\n\treturn \"" . $line[1] . "\";\n";
+					}	
+				}
+				fclose($file);
+			}
+		?>
+		return unit;
+	}
+	
     function setMarkers(map, locations) {
 	  var lat,lon,info,modemId,date,units,text;
       for (var i = 0; i < locations.length; i++) {
@@ -27,11 +67,11 @@
 					date = info[1];
 					units = info[2];
 					text = "<br>";
-					text += '<h3>Modem ID:' + modemId + '</h3>';
+					text += '<h3>Modem ID:' + renderModem(modemId) + '</h3>';
 					text += '<h3>' + date + '</h3>';
 					for(i=0;i < units.length; i++) {
 						text += '<br>';
-						text += 'Unit ID:' + units[i][0] + '\t';
+						text += 'Unit ID:' + renderUnit(units[i][0]) + '\t';
 						text += 'MCU_TEMPERATURE:'+ units[i][1] + '\t';
 					}
                     infowindow.setContent(text);

@@ -1,7 +1,7 @@
 <?php
 require_once('authenticate.php');
 $output_dir = "uploads/";
-$fileName = "modem.csv";
+$fileName = "units.csv";
 if(isset($_FILES["file"]))
 {
 	$ret = array();

@@ -58,8 +58,8 @@
 		}); 
 		
 		$("#upload2").uploadFile({
-			url: "sources/render/upload.php",
-			uploadStr:"Upload csv file for modem rendering",
+			url: "sources/render/modems/upload.php",
+			uploadStr:"Upload csv file for modems rendering",
 			returnType: "json",
 			showDelete: true,
 			showDownload:true,
@@ -75,7 +75,7 @@
 			{
 				$.ajax({
 						cache: false,
-						url: "sources/render/load.php",
+						url: "sources/render/modems/load.php",
 						dataType: "json",
 						success: function(data) 
 						{
@@ -88,7 +88,7 @@
 			},
 			deleteCallback: function (data, pd) {
 				for (var i = 0; i < data.length; i++) {
-					$.post("sources/render/delete.php", {op: "delete",name: data[i]},
+					$.post("sources/render/modems/delete.php", {op: "delete",name: data[i]},
 						function (resp,textStatus, jqXHR) {
 							//Show Message	
 							alert("File Deleted");
@@ -99,7 +99,53 @@
 			},
 			downloadCallback:function(filename,pd)
 				{
-					location.href="sources/render/download.php?filename="+filename;
+					location.href="sources/render/modems/download.php?filename="+filename;
+				}
+		}); 
+		
+		$("#upload3").uploadFile({
+			url: "sources/render/units/upload.php",
+			uploadStr:"Upload csv file for units rendering",
+			returnType: "json",
+			showDelete: true,
+			showDownload:true,
+			statusBarWidth:600,
+			maxFileSize:10000*1024,
+			previewHeight: "100px",
+			previewWidth: "100px",
+			maxFileCount:1,
+			acceptFiles:".csv",
+			dragDrop:false,
+			
+			onLoad:function(obj)
+			{
+				$.ajax({
+						cache: false,
+						url: "sources/render/units/load.php",
+						dataType: "json",
+						success: function(data) 
+						{
+							for(var i=0;i<data.length;i++)
+						{ 
+							obj.createProgress(data[i]["name"],data[i]["path"],data[i]["size"]);
+						}
+						}
+					});
+			},
+			deleteCallback: function (data, pd) {
+				for (var i = 0; i < data.length; i++) {
+					$.post("sources/render/units/delete.php", {op: "delete",name: data[i]},
+						function (resp,textStatus, jqXHR) {
+							//Show Message	
+							alert("File Deleted");
+						});
+				}
+				pd.statusbar.hide(); //You choice.
+			
+			},
+			downloadCallback:function(filename,pd)
+				{
+					location.href="sources/render/units/download.php?filename="+filename;
 				}
 		}); 
 		
@@ -175,6 +221,7 @@
 </script>
 <div id="upload1">Upload</div>
 <div id="upload2">Upload</div>
+<div id="upload3">Upload</div>
 <table id="users_table" class="display" cellspacing="0" width="100%">
 	<thead>
         <tr>

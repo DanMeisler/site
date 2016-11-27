@@ -79,7 +79,7 @@
             {
                 "render": function ( data, type, row ) {
 					<?php 
-						$filename = "./sources/render/uploads/modem.csv";
+						$filename = "./sources/render/modems/uploads/modems.csv";
 						if (file_exists($filename)) {
 							$file = fopen($filename, "r");
 							while(!feof($file))
@@ -96,6 +96,27 @@
                     return data;
                 },
                 "targets": 0
+            },
+			{
+                "render": function ( data, type, row ) {
+					<?php 
+						$filename = "./sources/render/units/uploads/units.csv";
+						if (file_exists($filename)) {
+							$file = fopen($filename, "r");
+							while(!feof($file))
+							{
+								$line = (fgetcsv($file));
+							    if ($line)
+								{
+									echo "if(\"" . $line[0] . "\" == data)\n\treturn \"" . $line[1] . "\";\n";
+								}	
+							}
+							fclose($file);
+						}
+					?>
+                    return data;
+                },
+                "targets": 1
             },
 			{
 				"render": function ( data, type, row ) {
