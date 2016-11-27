@@ -6,9 +6,9 @@
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css">
 <style type="text/css">
             .gmap-button{
-				width: 100%;
-				height: 100%;
-                background: url('./sources/images/gmap.png') no-repeat center center;
+				width: 32px;
+				height: 32px;
+                background: url('./sources/images/gmap.ico') no-repeat center center;
                 cursor: pointer;
                 border: none;
             }
@@ -112,6 +112,8 @@
 			{
 				"targets": -1,
 				"data": null,
+				"searchable": false,
+				"orderable": false,
 				"defaultContent": "<button class='gmap-button'></button>"
 			}]
         });

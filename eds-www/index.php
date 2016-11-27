@@ -48,10 +48,10 @@
       var mapOptions = {
         zoom: 9,
 		<?php
-		if(isset($_GET["Lat"]) && isset($_GET["Lon"]))
-		{
-			$lat = $_GET["Lat"];
-			$lon = $_GET["Lon"];
+			if(isset($_GET["Lat"]) && isset($_GET["Lon"]))
+			{
+				$lat = $_GET["Lat"];
+				$lon = $_GET["Lon"];
 		?>
         center: new google.maps.LatLng(<?php echo $lat; ?>, <?php echo $lon; ?>),
 		<?php } else {?>

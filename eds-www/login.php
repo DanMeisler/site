@@ -20,14 +20,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		if($user) {
 			session_start();
 			$_SESSION["authenticated"] = 'true';
-			if($user["isAdmin"])
-			{
-				$_SESSION["isAdmin"] = 'true';
-			}
-			else
-			{
-				$_SESSION["isAdmin"] = 'false';
-			}
+			$_SESSION["isAdmin"] = $user["isAdmin"];
+			$_SESSION["username"] = $username;
 			header('Location: index.php');
 		}
 		else {
@@ -67,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				</div>
 			</button>
 		</form>
-		<div style="position: fixed; width: 229px; height: 151px; bottom: 10;left: 10; background-image: url('/images/logo.png');">
+		<div style="position: fixed; width: 229px; height: 151px; bottom: 10;left: 10; background-image: url('sources/images/logo.png');">
 		</div>
 	</body>
 </html>
