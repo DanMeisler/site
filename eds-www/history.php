@@ -113,7 +113,10 @@
         } );
 		table.ajax.reload( null, false);
 		setInterval( function () {
-			table.ajax.reload( null, false);
+			scrollPos = $(".dataTables_scrollBody").scrollTop();
+			table.ajax.reload( function() {
+				$(".dataTables_scrollBody").scrollTop(scrollPos);
+			}, false);
 		}, 10000 );
 		Papa.parse('./sources/render/modems/uploads/modems.csv', {
 					download: true,
