@@ -154,12 +154,13 @@
 			"bPaginate": false,
 			"bInfo" : false,
 			"ajax": {
-				"url": "getTable.php",
+				"url": "getUsers.php",
+				"type": "POST",
 				"data": {
 					<?php if($_SESSION["isAdmin"] == 'true') {?>
-					"table": "users"
+					"job": "users"
 					<?php } else { ?>
-					"table": "user",
+					"job": "user",
 					"username": "<?php echo $_SESSION["username"];?>"
 					<?php } ?>
 				}

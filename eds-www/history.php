@@ -4,6 +4,7 @@
 
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="./sources/css/scroller.dataTables.min.css">
 <style type="text/css">
             .gmap-button{
 				width: 32px;
@@ -22,6 +23,7 @@
 <script type="text/javascript" charset="utf8" src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
 <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
 <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+<script type="text/javascript" charset="utf8" src="./sources/js/dataTables.scroller.min.js"></script>
 <script type="text/javascript" charset="utf8" src="./sources/js/papaparse.js"></script>
 <script type="text/javascript" charset="utf8">
 	var renderModems = function(data) {return data};
@@ -33,14 +35,18 @@
 			"serverSide": true,
 			"order": [[ 9, 'desc' ]],
 			"ajax": {
-            "url": "historyTable.php",
+            "url": "getTable.php",
 			"type": "POST",
             "data": function ( d ) {
+				d.table = 'history';
                 d.minDate = $('#min').val();
 				d.maxDate = $('#max').val(); 
             }
 			},
-            dom: 'Bfrtip',
+			scroller: {
+				loadingIndicator: true
+			},
+            dom: 'Bfrti',
             buttons: [
                 'copy', 'csv', 'excel',
                 {
@@ -111,7 +117,6 @@
         $('#min, #max').change( function() {
             table.draw();
         } );
-		table.ajax.reload( null, false);
 		setInterval( function () {
 			scrollPos = $(".dataTables_scrollBody").scrollTop();
 			table.ajax.reload( function() {
