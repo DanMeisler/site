@@ -1,6 +1,7 @@
 <?php
     require_once('authenticate.php');
 ?>
+
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css">
 <style type="text/css">
@@ -21,28 +22,23 @@
 <script type="text/javascript" charset="utf8" src="//cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
 <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
 <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+<script type="text/javascript" charset="utf8" src="./sources/js/papaparse.js"></script>
 <script type="text/javascript" charset="utf8">
-    /* Custom filtering function which will search data in column 9 between two values */
-    $.fn.dataTableExt.afnFiltering.push(
-        function( settings, data, dataIndex ) {
-            var min = new Date($('#min').val());
-            var max = new Date($('#max').val());
-            var date = Date.parse( data[9] ) || 0; // use data for the date column
-            if ( ( isNaN( min ) && isNaN( max ) ) || ( isNaN( min ) && date <= max ) || ( min <= date   && isNaN( max ) ) || ( min <= date   && date <= max ) )
-			{
-				return true;
-			}
-            return false;
-        }
-    );
+	var renderModems = function(data) {return data};
+	var renderUnits = function(data) {return data};
+	
     $(document).ready( function () {
         var table = $('#currentState_table').DataTable({
+			"processing": true,
+			"serverSide": true,
 			"order": [[ 9, 'desc' ]],
 			"ajax": {
-				"url": "getTable.php",
-				"data": {
-					"table": "currentState"
-				}
+            "url": "currentStateTable.php",
+			"type": "POST",
+            "data": function ( d ) {
+                d.minDate = $('#min').val();
+				d.maxDate = $('#max').val(); 
+            }
 			},
             dom: 'Bfrtip',
             buttons: [
@@ -69,44 +65,14 @@
 			{ "data": null }],
             "columnDefs": [
             {
-                "render": function ( data, type, row ) {
-					<?php 
-						$filename = "./sources/render/modems/uploads/modems.csv";
-						if (file_exists($filename)) {
-							$file = fopen($filename, "r");
-							while(!feof($file))
-							{
-								$line = (fgetcsv($file));
-							    if ($line)
-								{
-									echo "if(\"" . $line[0] . "\" == data)\n\treturn \"" . $line[1] . "\";\n";
-								}	
-							}
-							fclose($file);
-						}
-					?>
-                    return data;
+                "render": function ( data, type, row ) {					
+                    return renderModems(data);
                 },
                 "targets": 0
             },
 			{
                 "render": function ( data, type, row ) {
-					<?php 
-						$filename = "./sources/render/units/uploads/units.csv";
-						if (file_exists($filename)) {
-							$file = fopen($filename, "r");
-							while(!feof($file))
-							{
-								$line = (fgetcsv($file));
-							    if ($line)
-								{
-									echo "if(\"" . $line[0] . "\" == data)\n\treturn \"" . $line[1] . "\";\n";
-								}	
-							}
-							fclose($file);
-						}
-					?>
-                    return data;
+                    return renderUnits(data);
                 },
                 "targets": 1
             },
@@ -128,8 +94,7 @@
 				"searchable": false,
 				"orderable": false,
 				"defaultContent": "<button class='gmap-button'></button>"
-			}
-			]
+			}]
         });
 		// Event listener for opening on google maps
 		$('#currentState_table tbody').on('click', 'button', function () {
@@ -146,9 +111,46 @@
         $('#min, #max').change( function() {
             table.draw();
         } );
+		table.ajax.reload( null, false);
 		setInterval( function () {
 			table.ajax.reload( null, false);
 		}, 10000 );
+		Papa.parse('./sources/render/modems/uploads/modems.csv', {
+					download: true,
+					complete: function(results){
+						renderModems = function(data)
+						{
+							var result = results['data'];
+				
+							return function() {
+								for (var i = 0; i < result.length; i++) {
+									if(data == result[i][0])
+										return result[i][1];
+								}
+								return data;
+							};
+							
+						};
+					}
+					});
+		Papa.parse('./sources/render/units/uploads/units.csv', {
+					download: true,
+					complete: function(results){
+						renderUnits = function(data)
+						{
+							var result = results['data'];
+				
+							return function() {
+								for (var i = 0; i < result.length; i++) {
+									if(data == result[i][0])
+										return result[i][1];
+								}
+								return data;
+							};
+							
+						};
+					}
+					});
 		});
 </script>
 <table border="0" cellspacing="5" cellpadding="5">
