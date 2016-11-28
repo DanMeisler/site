@@ -134,7 +134,13 @@
 		// Event listener for opening on google maps
 		$('#currentState_table tbody').on('click', 'button', function () {
 			var data = table.row( $(this).parents('tr')).data();
-			location.href = "./index.php?Lat=" + data["Latitude"] + "&Lon=" + data["Longitude"];
+			//location.href = "./index.php?Lat=" + data["Latitude"] + "&Lon=" + data["Longitude"];
+			var form = $('<form action="./index.php" method="post">' +
+			'<input type="text" name="Lat" value="' + data["Latitude"] + '" />' +
+			'<input type="text" name="Lon" value="' + data["Longitude"] + '" />' +
+			'</form>');
+			$('body').append(form);
+			form.submit();
 		});
         // Event listener to the two range filtering inputs to redraw on input
         $('#min, #max').change( function() {

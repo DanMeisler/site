@@ -88,10 +88,10 @@
       var mapOptions = {
         zoom: 9,
 		<?php
-			if(isset($_GET["Lat"]) && isset($_GET["Lon"]))
+			if(isset($_REQUEST["Lat"]) && isset($_REQUEST["Lon"]))
 			{
-				$lat = $_GET["Lat"];
-				$lon = $_GET["Lon"];
+				$lat = $_REQUEST["Lat"];
+				$lon = $_REQUEST["Lon"];
 		?>
         center: new google.maps.LatLng(<?php echo $lat; ?>, <?php echo $lon; ?>),
 		<?php } else {?>
@@ -101,10 +101,8 @@
       map = new google.maps.Map(document.getElementById('map-canvas'),
                                     mapOptions);
 	  <?php
-		if(isset($_GET["Lat"]) && isset($_GET["Lon"]))
+		if(isset($lat) && isset($lon))
 		{
-			$lat = $_GET["Lat"];
-			$lon = $_GET["Lon"];
 	  ?>
 	  var myLatLng = new google.maps.LatLng(<?php echo $lat; ?>, <?php echo $lon; ?>);
       var marker = new google.maps.Marker({

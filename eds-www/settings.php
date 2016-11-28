@@ -150,6 +150,9 @@
 		}); 
 		
 		table = $('#users_table').DataTable({
+			"bLengthChange": false,
+			"bPaginate": false,
+			"bInfo" : false,
 			"ajax": {
 				"url": "getTable.php",
 				"data": {
@@ -222,6 +225,7 @@
 <div id="upload1">Upload</div>
 <div id="upload2">Upload</div>
 <div id="upload3">Upload</div>
+<br><br><br><br><br><br><br><br><br><br><br><br>
 <table id="users_table" class="display" cellspacing="0" width="100%">
 	<thead>
         <tr>
@@ -235,6 +239,8 @@
         </tr>
     </thead>
 </table>
+<br><br><br><br><br><br><br><br><br><br><br><br>
 <button onClick=location.href="./logout.php">Logout</button>
+<br><br><br><br><br><br><br><br><br><br><br><br>
 <div style="position: fixed; width: 229px; height: 151px; bottom: 10;left: 10; background-image: url('sources/images/logo.png');">
 </div>

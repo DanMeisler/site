@@ -4,7 +4,7 @@
 		<name>כלובים</name>
 		<description><![CDATA[כלובים<br>]]></description>
 		<Folder>
-			<name>מקומות</name>
+			<name>לקוחות</name>
 			<Placemark>
 				<name>משתלה</name>
 				<description><![CDATA[משתלה]]></description>
@@ -57,7 +57,322 @@
 					</outerBoundaryIs>
 				</Polygon>
 			</Placemark>
+			<Placemark>
+				<name>רחובות</name>
+				<styleUrl>#icon-22-nodesc</styleUrl>
+				<Point>
+					<coordinates>34.811272,31.892773,0.0</coordinates>
+				</Point>
+			</Placemark>
 		</Folder>
+		<Folder>
+			<name>יישובים</name>
+			<Placemark>
+				<name>חצב</name>
+				<description><![CDATA[Hazav]]></description>
+				<styleUrl>#poly-000000-1-77</styleUrl>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<tessellate>1</tessellate>
+							<coordinates>34.7670078,31.7921326,0.0 34.7635746,31.7817727,0.0 34.7591972,31.7779057,0.0 34.7687674,31.7702076,0.0 34.7773933,31.7791825,0.0 34.7771358,31.7887767,0.0 34.7670078,31.7921326,0.0</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>משען</name>
+				<description><![CDATA[משען]]></description>
+				<styleUrl>#poly-000000-1-77</styleUrl>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<tessellate>1</tessellate>
+							<coordinates>34.6165466,31.6489976,0.0 34.6261597,31.6495821,0.0 34.635601,31.6537467,0.0 34.6252155,31.664194,0.0 34.6125126,31.6585687,0.0 34.6165466,31.6489976,0.0</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>בית עזרא</name>
+				<description><![CDATA[בית עזרא]]></description>
+				<styleUrl>#poly-000000-1-77</styleUrl>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<tessellate>1</tessellate>
+							<coordinates>34.6464157,31.7275466,0.0 34.6632385,31.7252105,0.0 34.6649551,31.7405039,0.0 34.6490765,31.7460878,0.0 34.6456861,31.7415623,0.0 34.6464157,31.7275466,0.0</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>אמונים</name>
+				<description><![CDATA[אמונים]]></description>
+				<styleUrl>#poly-000000-1-77</styleUrl>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<tessellate>1</tessellate>
+							<coordinates>34.6670151,31.7334233,0.0 34.6884727,31.7375111,0.0 34.6837091,31.7499561,0.0 34.6684313,31.7476935,0.0 34.6670151,31.7334233,0.0</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>גבעתי</name>
+				<description><![CDATA[גבעתי]]></description>
+				<styleUrl>#poly-000000-1-77</styleUrl>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<tessellate>1</tessellate>
+							<coordinates>34.67062,31.7214506,0.0 34.6944809,31.725904,0.0 34.6895027,31.7375841,0.0 34.6676159,31.7331313,0.0 34.67062,31.7214506,0.0</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>רחובות</name>
+				<description><![CDATA[עירית רחובות]]></description>
+				<styleUrl>#poly-000000-1-77</styleUrl>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<tessellate>1</tessellate>
+							<coordinates>34.8195362,31.8751524,0.0 34.8370457,31.8869594,0.0 34.8253727,31.9153046,0.0 34.8022842,31.9137747,0.0 34.7680378,31.8973075,0.0 34.7761059,31.8776305,0.0 34.8195362,31.8751524,0.0</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>רעננה</name>
+				<description><![CDATA[ע' רעננה]]></description>
+				<styleUrl>#poly-000000-1-77</styleUrl>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<tessellate>1</tessellate>
+							<coordinates>34.8760128,32.1708902,0.0 34.8858833,32.1727791,0.0 34.8881149,32.1758304,0.0 34.8899174,32.1835309,0.0 34.8863125,32.1987119,0.0 34.8597908,32.2008181,0.0 34.8415947,32.1931918,0.0 34.8473454,32.1805525,0.0 34.8760128,32.1708902,0.0</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>כפר סבא</name>
+				<description><![CDATA[ע' כפר סבא]]></description>
+				<styleUrl>#poly-000000-1-77</styleUrl>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<tessellate>1</tessellate>
+							<coordinates>34.9258804,32.16377,0.0 34.9386692,32.1735783,0.0 34.9476814,32.1891968,0.0 34.9354076,32.1947171,0.0 34.9342918,32.187744,0.0 34.9118042,32.1920296,0.0 34.8893166,32.1937002,0.0 34.8899174,32.1835309,0.0 34.8883724,32.1737236,0.0 34.9258804,32.16377,0.0</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>ראשון לציון</name>
+				<description><![CDATA[ע' ראשון לציון]]></description>
+				<styleUrl>#poly-000000-1-77</styleUrl>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<tessellate>1</tessellate>
+							<coordinates>34.8165321,31.9406549,0.0 34.8336983,31.9563861,0.0 34.8311234,31.9805602,0.0 34.7634888,31.9981771,0.0 34.7485542,31.9665808,0.0 34.8165321,31.9406549,0.0</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>נס ציונה</name>
+				<description><![CDATA[ע' נס ציונה]]></description>
+				<styleUrl>#poly-000000-1-77</styleUrl>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<tessellate>1</tessellate>
+							<coordinates>34.8022842,31.9137747,0.0 34.8043442,31.9137018,0.0 34.8225403,31.9358477,0.0 34.797821,31.9457533,0.0 34.7844315,31.9326427,0.0 34.7813416,31.9221528,0.0 34.8022842,31.9137747,0.0</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>באר יעקב</name>
+				<description><![CDATA[ע' באר יעקב]]></description>
+				<styleUrl>#poly-000000-1-77</styleUrl>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<tessellate>1</tessellate>
+							<coordinates>34.8263168,31.928272,0.0 34.8537827,31.9332254,0.0 34.8575592,31.950997,0.0 34.8373032,31.9518709,0.0 34.8204803,31.9431313,0.0 34.8263168,31.928272,0.0</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>אשדוד</name>
+				<description><![CDATA[ע' אשדוד]]></description>
+				<styleUrl>#poly-000000-1-77</styleUrl>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<tessellate>1</tessellate>
+							<coordinates>34.6436691,31.757364,0.0 34.6828079,31.7964732,0.0 34.6567154,31.8370243,0.0 34.61586,31.7704995,0.0 34.6436691,31.757364,0.0</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>אשקלון</name>
+				<description><![CDATA[ע' אשקלון]]></description>
+				<styleUrl>#poly-000000-1-77</styleUrl>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<tessellate>1</tessellate>
+							<coordinates>34.5581818,31.6264906,0.0 34.6029854,31.6579112,0.0 34.6093369,31.6729601,0.0 34.6129417,31.6882987,0.0 34.5743179,31.704657,0.0 34.5267677,31.6422753,0.0 34.5581818,31.6264906,0.0</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>שוהם</name>
+				<description><![CDATA[ע' שוהם]]></description>
+				<styleUrl>#poly-000000-1-77</styleUrl>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<tessellate>1</tessellate>
+							<coordinates>34.9375534,31.9828899,0.0 34.9638176,31.9923537,0.0 34.9679375,32.0162272,0.0 34.9530029,32.0176827,0.0 34.9241638,31.995411,0.0 34.9375534,31.9828899,0.0</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>תל אביב</name>
+				<description><![CDATA[ע' תל אביב]]></description>
+				<styleUrl>#poly-000000-1-77</styleUrl>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<tessellate>1</tessellate>
+							<coordinates>34.7823715,32.0261242,0.0 34.8009109,32.0331096,0.0 34.8369598,32.1154394,0.0 34.7837448,32.1270702,0.0 34.7394562,32.0377663,0.0 34.7823715,32.0261242,0.0</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>חולון</name>
+				<description><![CDATA[ע' חולון]]></description>
+				<styleUrl>#poly-000000-1-77</styleUrl>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<tessellate>1</tessellate>
+							<coordinates>34.7662354,31.999924,0.0 34.8156738,32.0054558,0.0 34.8091507,32.0281616,0.0 34.7875214,32.0237956,0.0 34.7652054,32.0275795,0.0 34.7662354,31.999924,0.0</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>רמלה</name>
+				<description><![CDATA[ע' רמלה]]></description>
+				<styleUrl>#poly-000000-1-77</styleUrl>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<tessellate>1</tessellate>
+							<coordinates>34.8680305,31.9122446,0.0 34.8846817,31.9239741,0.0 34.8649406,31.9410919,0.0 34.8567009,31.9405821,0.0 34.8543835,31.9332254,0.0 34.8379898,31.9228085,0.0 34.8680305,31.9122446,0.0</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>לוד</name>
+				<description><![CDATA[ע' לוד]]></description>
+				<styleUrl>#poly-000000-1-77</styleUrl>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<tessellate>1</tessellate>
+							<coordinates>34.88554,31.9246297,0.0 34.9094868,31.945025,0.0 34.9063969,31.9696389,0.0 34.8892307,31.9708767,0.0 34.8891449,31.9587892,0.0 34.8663139,31.9416746,0.0 34.88554,31.9246297,0.0</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>נתב"ג</name>
+				<description><![CDATA[נתב"ג]]></description>
+				<styleUrl>#poly-000000-1-77</styleUrl>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<tessellate>1</tessellate>
+							<coordinates>34.8714638,31.9882771,0.0 34.9090576,31.9980315,0.0 34.9023628,32.0208847,0.0 34.852066,32.014335,0.0 34.8714638,31.9882771,0.0</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+			<Placemark>
+				<name>מודיעין</name>
+				<description><![CDATA[מודיעין (כולל רעות)]]></description>
+				<styleUrl>#poly-000000-1-77</styleUrl>
+				<Polygon>
+					<outerBoundaryIs>
+						<LinearRing>
+							<tessellate>1</tessellate>
+							<coordinates>35.0015831,31.8726742,0.0 35.0272465,31.8777763,0.0 35.0304222,31.900368,0.0 35.0051022,31.92208,0.0 34.9820995,31.9051771,0.0 35.0015831,31.8726742,0.0</coordinates>
+						</LinearRing>
+					</outerBoundaryIs>
+				</Polygon>
+			</Placemark>
+		</Folder>
+		<Style id='icon-22-nodesc'>
+			<IconStyle>
+				<scale>1.1</scale>
+				<Icon>
+					<href>http://www.gstatic.com/mapspro/images/stock/22-blue-dot.png</href>
+				</Icon>
+				<hotSpot x='16' y='31' xunits='pixels' yunits='insetPixels'>
+				</hotSpot>
+			</IconStyle>
+			<BalloonStyle>
+				<text><![CDATA[<h3>$[name]</h3>]]></text>
+			</BalloonStyle>
+		</Style>
+		<Style id='poly-000000-1-77-normal'>
+			<LineStyle>
+				<color>ff000000</color>
+				<width>1</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>4D000000</color>
+				<fill>1</fill>
+				<outline>1</outline>
+			</PolyStyle>
+		</Style>
+		<Style id='poly-000000-1-77-highlight'>
+			<LineStyle>
+				<color>ff000000</color>
+				<width>2.0</width>
+			</LineStyle>
+			<PolyStyle>
+				<color>4D000000</color>
+				<fill>1</fill>
+				<outline>1</outline>
+			</PolyStyle>
+		</Style>
+		<StyleMap id='poly-000000-1-77'>
+			<Pair>
+				<key>normal</key>
+				<styleUrl>#poly-000000-1-77-normal</styleUrl>
+			</Pair>
+			<Pair>
+				<key>highlight</key>
+				<styleUrl>#poly-000000-1-77-highlight</styleUrl>
+			</Pair>
+		</StyleMap>
 		<Style id='poly-0000FF-3-115-normal'>
 			<LineStyle>
 				<color>ffFF0000</color>
