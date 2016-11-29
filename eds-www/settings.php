@@ -58,52 +58,6 @@
 		}); 
 		
 		$("#upload2").uploadFile({
-			url: "sources/render/modems/upload.php",
-			uploadStr:"Upload csv file for modems rendering",
-			returnType: "json",
-			showDelete: true,
-			showDownload:true,
-			statusBarWidth:600,
-			maxFileSize:10000*1024,
-			previewHeight: "100px",
-			previewWidth: "100px",
-			maxFileCount:1,
-			acceptFiles:".csv",
-			dragDrop:false,
-			
-			onLoad:function(obj)
-			{
-				$.ajax({
-						cache: false,
-						url: "sources/render/modems/load.php",
-						dataType: "json",
-						success: function(data) 
-						{
-							for(var i=0;i<data.length;i++)
-						{ 
-							obj.createProgress(data[i]["name"],data[i]["path"],data[i]["size"]);
-						}
-						}
-					});
-			},
-			deleteCallback: function (data, pd) {
-				for (var i = 0; i < data.length; i++) {
-					$.post("sources/render/modems/delete.php", {op: "delete",name: data[i]},
-						function (resp,textStatus, jqXHR) {
-							//Show Message	
-							alert("File Deleted");
-						});
-				}
-				pd.statusbar.hide(); //You choice.
-			
-			},
-			downloadCallback:function(filename,pd)
-				{
-					location.href="sources/render/modems/download.php?filename="+filename;
-				}
-		}); 
-		
-		$("#upload3").uploadFile({
 			url: "sources/render/units/upload.php",
 			uploadStr:"Upload csv file for units rendering",
 			returnType: "json",
@@ -146,6 +100,52 @@
 			downloadCallback:function(filename,pd)
 				{
 					location.href="sources/render/units/download.php?filename="+filename;
+				}
+		}); 
+		
+		$("#upload3").uploadFile({
+			url: "sources/render/tags/upload.php",
+			uploadStr:"Upload csv file for tags rendering",
+			returnType: "json",
+			showDelete: true,
+			showDownload:true,
+			statusBarWidth:600,
+			maxFileSize:10000*1024,
+			previewHeight: "100px",
+			previewWidth: "100px",
+			maxFileCount:1,
+			acceptFiles:".csv",
+			dragDrop:false,
+			
+			onLoad:function(obj)
+			{
+				$.ajax({
+						cache: false,
+						url: "sources/render/tags/load.php",
+						dataType: "json",
+						success: function(data) 
+						{
+							for(var i=0;i<data.length;i++)
+						{ 
+							obj.createProgress(data[i]["name"],data[i]["path"],data[i]["size"]);
+						}
+						}
+					});
+			},
+			deleteCallback: function (data, pd) {
+				for (var i = 0; i < data.length; i++) {
+					$.post("sources/render/tags/delete.php", {op: "delete",name: data[i]},
+						function (resp,textStatus, jqXHR) {
+							//Show Message	
+							alert("File Deleted");
+						});
+				}
+				pd.statusbar.hide(); //You choice.
+			
+			},
+			downloadCallback:function(filename,pd)
+				{
+					location.href="sources/render/tags/download.php?filename="+filename;
 				}
 		}); 
 		

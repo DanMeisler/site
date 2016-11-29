@@ -18,15 +18,15 @@
 			array(
 				'$group' => array(
 					"_id" => array(
-						"Modem ID" => '$Modem ID',
-						"Date" => '$Date',
-						"Latitude" => '$Latitude',
-						"Longitude" => '$Longitude'
+						"UID" => '$UID',
+						"DATE" => '$DATE',
+						"LATITUDE" => '$LATITUDE',
+						"LONGITUDE" => '$LONGITUDE'
 					),
-					"units" => array(
+					"tags" => array(
 						'$push' => array(
-							'Unit ID' => '$Unit ID',
-							'MCU_TEMPERATURE' => '$MCU_TEMPERATURE'
+							'TID' => '$TID',
+							'MCUTMP' => '$MCUTMP'
 						)
 					),
 				),
@@ -35,20 +35,20 @@
 	// find everything in the collection
 	$results = $collection->aggregate($ops)["result"];
 	$m->close();
-	$modems = array();
+	$units = array();
 	foreach ($results as $doc) {
-		$lat = $doc["_id"]["Latitude"];
-		$lon = $doc["_id"]["Longitude"];
-		$modemId = $doc["_id"]["Modem ID"];
+		$lat = $doc["_id"]["LATITUDE"];
+		$lon = $doc["_id"]["LONGITUDE"];
+		$unitID = $doc["_id"]["UID"];
 		$info = array();
-		array_push($info,$modemId);
-		array_push($info,$doc["_id"]["Date"]);
-		$units = array();
-		foreach ($doc["units"] as $unit) {
-			array_push($units,array($unit['Unit ID'],$unit['MCU_TEMPERATURE']));
+		array_push($info,$unitID);
+		array_push($info,$doc["_id"]["DATE"]);
+		$tags = array();
+		foreach ($doc["tags"] as $tag) {
+			array_push($tags,array($tag['TID'],$tag['MCUTMP']));
 		}
-		array_push($info,$units);
-		array_push($modems,array( $lat, $lon, $info));
+		array_push($info,$tags);
+		array_push($units,array( $lat, $lon, $info));
 	}
-	echo json_encode($modems);
+	echo json_encode($units);
 ?>

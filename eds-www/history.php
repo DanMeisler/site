@@ -65,7 +65,7 @@
             {
 				"data": "UID",
                 "render": function ( data, type, row ) {					
-                    return renderTags(data);
+                    return renderUnits(data);
                 },
                 "targets": 1
             },
@@ -78,6 +78,9 @@
             },
 			{
 				"data": "TBAT",
+				"render": function ( data, type, row ) {
+                    return data + ' V';
+                },
 				"targets": 3
 			},
 			{
