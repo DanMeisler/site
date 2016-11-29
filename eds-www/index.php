@@ -50,7 +50,7 @@
 	}
 	
     function setMarkers(map, locations) {
-	  var lat,lon,info,modemId,date,units,text;
+	  var lat,lon,info,unitID,date,tags,text;
       for (var i = 0; i < locations.length; i++) {
 		lat = locations[i][0];
 		lon = locations[i][1];
@@ -63,16 +63,16 @@
 		google.maps.event.addListener(marker, 'mousedown', (function (marker, i) {
                 return function () {
 					info = locations[i][2];
-					modemId = info[0];
+					unitID = info[0];
 					date = info[1];
-					units = info[2];
+					tags = info[2];
 					text = "<br>";
-					text += '<h3>Modem ID:' + renderUnits(modemId) + '</h3>';
+					text += '<h3>Unit ID:' + renderUnits(unitID) + '</h3>';
 					text += '<h3>' + date + '</h3>';
-					for(i=0;i < units.length; i++) {
+					for(i=0;i < tags.length; i++) {
 						text += '<br>';
-						text += 'Unit ID:' + renderTags(units[i][0]) + '\t';
-						text += 'MCU_TEMPERATURE:'+ units[i][1] + '\t';
+						text += 'Tag ID:' + renderTags(tags[i][0]) + '\t';
+						text += 'MCU_TEMPERATURE:'+ tags[i][1] + '\t';
 					}
                     infowindow.setContent(text);
                     infowindow.open(map, marker);
