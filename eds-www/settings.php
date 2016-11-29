@@ -223,6 +223,9 @@
 			});
 	}
 </script>
+<div id="controls" style="position: fixed;top: 20;right: 20;">
+    <button onclick="window.location.href='/index.php'">map view</button>
+</div>
 <div id="upload1">Upload</div>
 <div id="upload2">Upload</div>
 <div id="upload3">Upload</div>

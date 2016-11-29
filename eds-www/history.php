@@ -57,36 +57,39 @@
             ],
 			"scrollX": true,
             "scrollY": 250,
-			"columns": [
-            { "data": "Modem ID" },
-            { "data": "Unit ID" },
-            { "data": "GPS_DATA" },
-            { "data": "Bat voltage indicate" },
-            { "data": "MCU_TEMPERATURE" },
-			{ "data": "Ex_TEMP_Sensor" },
-			{ "data": "Latitude" },
-            { "data": "Longitude" },
-			{ "data": "Area" },
-			{ "data": "Date" },
-			{ "data": null }],
 			"columnDefs": [
             {
+				"data": "Modem ID",
                 "render": function ( data, type, row ) {					
                     return renderModems(data);
                 },
                 "targets": 0
             },
 			{
+				"data": "Unit ID",
                 "render": function ( data, type, row ) {
                     return renderUnits(data);
                 },
                 "targets": 1
             },
 			{
+				"data": "GPS_DATA",
+				"targets": 2
+			},
+			{
+				"data": "Bat voltage indicate",
 				"render": function ( data, type, row ) {
                     return data + ' V';
                 },
                 "targets": 3
+			},
+			{
+				"data": "MCU_TEMPERATURE",
+				"targets": 4
+			},
+			{
+				"data": "Ex_TEMP_Sensor",
+				"targets": 5
 			},
 			{
 				"render": function ( data, type, row ) {
@@ -94,6 +97,28 @@
                 },
                 "targets": [4,5]
 			},
+			{
+				"data": "Latitude",
+				"targets": 6
+			},
+			{
+				"data": "Longitude",
+				"targets": 7
+			},
+			{
+				"data": "Area",
+				"targets": 8
+			},
+			{
+				"data": "Date",
+				"targets": 9
+			},
+			<?php if($_SESSION["isAdmin"] == 'false') {?>
+			{
+				"targets": [2,4,6,7],
+				"visible": false,
+			},
+			<?php } ?>
 			{
 				"targets": -1,
 				"data": null,
@@ -161,6 +186,12 @@
 					});
 		});
 </script>
+<div id="controls" style="position: fixed;top: 20;right: 20;">
+    <button onclick="window.location.href='/index.php'">map view</button>
+    <br>
+    <br>
+    <button onclick="window.location.href='/settings.php'">settings</button>
+</div>
 <table border="0" cellspacing="5" cellpadding="5">
     <tbody>
         <tr>

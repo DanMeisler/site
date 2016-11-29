@@ -3,7 +3,6 @@ require_once('authenticate.php');
 // Input method (use $_GET, $_POST or $_REQUEST)
 $input =& $_POST;
 
-
 $database   = 'gpsDB';
 
 if($input['table']=='currentState')
@@ -60,6 +59,7 @@ if ( !empty($search['value']) ) {
     }
 }
  
+/*
 // Individual column filtering
 for ( $i=0 ; $i < $columnsSize ; $i++ ) {
     if ( $columns[$i]['searchable'] == 'true' && $columns[$i]['search']['value'] != '' ) {
@@ -71,6 +71,7 @@ for ( $i=0 ; $i < $columnsSize ; $i++ ) {
         $searchTermsAll[ $columns[$i]['data'] ] = new MongoRegex( '/'.$sRegex.'/i' );
     }
 }
+*/
 
 //date filtering
 if(isset($input['maxDate']))
@@ -93,6 +94,13 @@ if(!empty($maxDate))
 if(sizeof($filter))
 {
 	$searchTermsAll['Date'] = $filter;
+}
+
+//valid data filtering (only if not admin)
+if($_SESSION['isAdmin'] == 'false')
+{
+	$searchTermsAll['Longitude'] = array('$ne' => 'None');
+	$searchTermsAll['Latitude'] = array('$ne' => 'None');
 }
 
 $searchTerms = $searchTermsAll;
