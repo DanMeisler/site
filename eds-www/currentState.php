@@ -159,10 +159,10 @@
 		// Event listener for opening on google maps
 		$('#currentState_table tbody').on('click', 'button', function () {
 			var data = table.row( $(this).parents('tr')).data();
-			//location.href = "./index.php?Lat=" + data["Latitude"] + "&Lon=" + data["Longitude"];
+			//location.href = "./index.php?Lat=" + data["LATITUDE"] + "&Lon=" + data["LONGITUDE"];
 			var form = $('<form action="./index.php" method="post">' +
-			'<input type="text" name="Lat" value="' + data["Latitude"] + '" />' +
-			'<input type="text" name="Lon" value="' + data["Longitude"] + '" />' +
+			'<input type="text" name="Lat" value="' + data["LATITUDE"] + '" />' +
+			'<input type="text" name="Lon" value="' + data["LONGITUDE"] + '" />' +
 			'</form>');
 			$('body').append(form);
 			form.submit();
