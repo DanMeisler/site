@@ -26,14 +26,14 @@
 <script type="text/javascript" charset="utf8" src="./sources/js/dataTables.scroller.min.js"></script>
 <script type="text/javascript" charset="utf8" src="./sources/js/papaparse.js"></script>
 <script type="text/javascript" charset="utf8">
-	var renderModems = function(data) {return data};
 	var renderUnits = function(data) {return data};
+	var renderTags = function(data) {return data};
 	
     $(document).ready( function () {
         var table = $('#history_table').DataTable({
 			"processing": true,
 			"serverSide": true,
-			"order": [[ 9, 'desc' ]],
+			"order": [[ 0, 'desc' ]],
 			"ajax": {
             "url": "getTable.php",
 			"type": "POST",
@@ -58,74 +58,100 @@
 			"scrollX": true,
             "scrollY": 250,
 			"columnDefs": [
-            {
-				"data": "Modem ID",
-                "render": function ( data, type, row ) {					
-                    return renderModems(data);
-                },
-                "targets": 0
-            },
 			{
-				"data": "Unit ID",
-                "render": function ( data, type, row ) {
-                    return renderUnits(data);
+				"data": "DATE",
+				"targets": 0
+			},
+            {
+				"data": "UID",
+                "render": function ( data, type, row ) {					
+                    return renderTags(data);
                 },
                 "targets": 1
             },
 			{
-				"data": "GPS_DATA",
-				"targets": 2
-			},
-			{
-				"data": "Bat voltage indicate",
-				"render": function ( data, type, row ) {
-                    return data + ' V';
+				"data": "TID",
+                "render": function ( data, type, row ) {
+                    return renderTags(data);
                 },
-                "targets": 3
+                "targets": 2
+            },
+			{
+				"data": "TBAT",
+				"targets": 3
 			},
 			{
-				"data": "MCU_TEMPERATURE",
+				"data": "TTMP",
 				"targets": 4
 			},
 			{
-				"data": "Ex_TEMP_Sensor",
-				"targets": 5
+				"data": "UBAT",
+				"render": function ( data, type, row ) {
+                    return data + ' V';
+                },
+                "targets": 5
+			},
+			{
+				"data": "MVOLIND",
+				"targets": 6
+			},
+			{
+				"data": "UCSQ",
+				"targets": 7
+			},
+			{
+				"data": "NETCON",
+				"targets": 8
+			},
+			{
+				"data": "MCUTMP",
+				"targets": 9
+			},
+			{
+				"data": "EXTTMP",
+				"targets": 10
 			},
 			{
 				"render": function ( data, type, row ) {
                     return data + '°';
                 },
-                "targets": [4,5]
+                "targets": [4,9,10]
 			},
 			{
-				"data": "Latitude",
-				"targets": 6
+				"data": "AREA",
+				"targets": 11
 			},
 			{
-				"data": "Longitude",
-				"targets": 7
+				"data": "LOC",
+				"targets": 12
 			},
 			{
-				"data": "Area",
-				"targets": 8
+				"data": "LATITUDE",
+				"targets": 13
+			},
+
+			{
+				"data": "LONGITUDE",
+				"targets": 14
 			},
 			{
-				"data": "Date",
-				"targets": 9
+				"data": "SPEED",
+				"targets": 15
 			},
-			<?php if($_SESSION["isAdmin"] == 'false') {?>
-			{
-				"targets": [2,4,6,7],
-				"visible": false,
-			},
-			<?php } ?>
 			{
 				"targets": -1,
 				"data": null,
 				"searchable": false,
 				"orderable": false,
 				"defaultContent": "<button class='gmap-button'></button>"
-			}]
+			},
+			<?php if($_SESSION["isAdmin"] == 'false') {?>
+			{
+				"targets": [9,10,12,13,14,15],
+				"visible": false,
+			},
+			<?php } ?>
+			]
         });
 		// Event listener for opening on google maps
 		$('#history_table tbody').on('click', 'button', function () {
@@ -148,10 +174,10 @@
 				$(".dataTables_scrollBody").scrollTop(scrollPos);
 			}, false);
 		}, 10000 );
-		Papa.parse('./sources/render/modems/uploads/modems.csv', {
+		Papa.parse('./sources/render/units/uploads/units.csv', {
 					download: true,
 					complete: function(results){
-						renderModems = function(data)
+						renderUnits = function(data)
 						{
 							var result = results['data'];
 				
@@ -166,10 +192,10 @@
 						};
 					}
 					});
-		Papa.parse('./sources/render/units/uploads/units.csv', {
+		Papa.parse('./sources/render/tags/uploads/tags.csv', {
 					download: true,
 					complete: function(results){
-						renderUnits = function(data)
+						renderTags = function(data)
 						{
 							var result = results['data'];
 				
@@ -211,16 +237,22 @@
 <table id="history_table" class="display" cellspacing="0" width="100%">
 	<thead>
         <tr>
-            <th>Modem ID</th>
+            <th>Date</th>
             <th>Unit ID</th>
-            <th>Gps data</th>
-            <th>Bat voltage indicate</th>
-            <th>Mcu temperature</th>
-            <th>Ex Temp Sensor</th>
+            <th>Tag ID</th>
+            <th>Tag voltage</th>
+			<th>Tag temp</th>
+            <th>Unit voltage</th>
+            <th>Main voltage indicate</th>
+            <th>GSM signal</th>
+			<th>Network host</th>
+			<th>Unit cpu temp</th>
+			<th>Unit sns temp</th>
+			<th>Area</th>
+			<th>GPS data</th>
 			<th>Latitude</th>
 			<th>Longitude</th>
-			<th>Area</th>
-			<th>Date</th>
+			<th>Speed</th>
 			<th></th>
         </tr>
     </thead>

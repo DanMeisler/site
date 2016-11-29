@@ -93,14 +93,14 @@ if(!empty($maxDate))
 }
 if(sizeof($filter))
 {
-	$searchTermsAll['Date'] = $filter;
+	$searchTermsAll['DATE'] = $filter;
 }
 
 //valid data filtering (only if not admin)
 if($_SESSION['isAdmin'] == 'false')
 {
-	$searchTermsAll['Longitude'] = array('$ne' => 'None');
-	$searchTermsAll['Latitude'] = array('$ne' => 'None');
+	$searchTermsAll['LONGITUDE'] = array('$ne' => 'None');
+	$searchTermsAll['LATITUDE'] = array('$ne' => 'None');
 }
 
 $searchTerms = $searchTermsAll;
