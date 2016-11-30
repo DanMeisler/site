@@ -161,8 +161,8 @@
 			var data = table.row( $(this).parents('tr')).data();
 			//location.href = "./index.php?Lat=" + data["LATITUDE"] + "&Lon=" + data["LONGITUDE"];
 			var form = $('<form action="./index.php" method="get">' +
-			'<input type="text" name="Lat" value="' + data["LATITUDE"] + '" />' +
-			'<input type="text" name="Lon" value="' + data["LONGITUDE"] + '" />' +
+			'<input type="hidden" name="Lat" value="' + data["LATITUDE"] + '" />' +
+			'<input type="hidden" name="Lon" value="' + data["LONGITUDE"] + '" />' +
 			'</form>');
 			$('body').append(form);
 			form.submit();
@@ -217,8 +217,6 @@
 </script>
 <div id="controls" style="position: fixed;top: 20;right: 20;">
     <button onclick="window.location.href='/index.php'">map view</button>
-    <br>
-    <br>
     <button onclick="window.location.href='/settings.php'">settings</button>
 </div>
 <table border="0" cellspacing="5" cellpadding="5">

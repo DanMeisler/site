@@ -156,11 +156,7 @@
 <div id="map-canvas" style="height: 100%; width: 100%"></div>
 <div id="controls" style="position: fixed;top: 20;right: 20;">
     <button onclick="window.location.href='/currentState.php'">current state view</button>
-    <br>
-    <br>
     <button onclick="window.location.href='/history.php'">history view</button>
-    <br>
-    <br>
     <button onclick="window.location.href='/settings.php'">settings</button>
 </div>
 <div style="position: fixed; width: 229px; height: 151px; bottom: 10;left: 10; background-image: url('sources/images/logo.png');">

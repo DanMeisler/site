@@ -11,7 +11,7 @@
 	// select a database
 	$db = $m->gpsDB;
 	
-if($_POST["job"] == "users")
+if($_SESSION['isAdmin'] == 'true')
 {
 	$collection = $db->users;
 	// find everything in the collection
@@ -27,10 +27,10 @@ if($_POST["job"] == "users")
 	$json = array("data" => $units);
 	echo json_encode($json);
 }
-elseif($_POST["job"] == "user")
+else
 {
 	$collection = $db->users;
-	$username = $_POST['username'];
+	$username = $_SESSION['username'];
 	if (isset($username)) {
 		$units = array();
 		$result = $collection->findOne(array("username" => $username));
@@ -45,11 +45,6 @@ elseif($_POST["job"] == "user")
 		$m->close();
 		die("No username given");
 	}
-}
-else
-{
-	$m->close();
-	die("No such collection");
 }
 
 	
