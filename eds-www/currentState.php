@@ -26,10 +26,10 @@
 <script type="text/javascript" charset="utf8" src="./sources/js/dataTables.scroller.min.js"></script>
 <script type="text/javascript" charset="utf8" src="./sources/js/papaparse.js"></script>
 <script type="text/javascript" charset="utf8">
-	var renderUnits = function(data) {return data};
-	var renderTags = function(data) {return data};
-	
     $(document).ready( function () {
+		var renderUnits = function(data) {return data};
+		var renderTags = function(data) {return data};
+		var renderAreas = function(data) {return ''}; 
         var table = $('#currentState_table').DataTable({
 			"processing": true,
 			"serverSide": true,
@@ -121,7 +121,9 @@
                 "targets": [4,9,10]
 			},
 			{
-				"data": "AREA",
+				"render": function ( data, type, row ) {
+                    return renderAreas([parseFloat(row['LONGITUDE']),parseFloat(row['LATITUDE'])]);
+                },
 				"targets": 11
 			},
 			{
@@ -213,6 +215,48 @@
 						};
 					}
 					});
+		$.get("/sources/kml/uploads/areas.kml", function(data){
+			var areas = [], coords, place, poly;
+			//loop through placemarks tags
+			$(data).find("Placemark").each(function(){
+				//get coordinates and place name
+				coords = $(this).find("coordinates").text().replace(/,0.0/g,'').split(' ');
+				place = $(this).find("name").text();
+				//store as JSON
+				poly = [];
+				coords.forEach(function(element) {
+					poly.push([parseFloat(element.split(',')[0]), parseFloat(element.split(',')[1])]);
+				});
+				areas.push({
+					"place": place,
+					"polygon": poly,
+				});
+				
+			});
+			function isInside(point, vs) {
+				var x = point[0], y = point[1];
+				
+				var inside = false;
+				for (var i = 0, j = vs.length - 1; i < vs.length; j = i++) {
+					var xi = vs[i][0], yi = vs[i][1];
+					var xj = vs[j][0], yj = vs[j][1];
+					
+					var intersect = ((yi > y) != (yj > y))
+						&& (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
+					if (intersect) inside = !inside;
+				}
+				
+				return inside;
+			};
+			renderAreas = function(coord)
+			{
+				for (var i = 0; i < areas.length; i++) {
+						if(isInside(coord, areas[i]['polygon']))
+							return areas[i]["place"];
+					}
+					return '';	
+			};
+		});
 		});
 </script>
 <div id="controls" style="position: fixed;top: 20;right: 20;">
