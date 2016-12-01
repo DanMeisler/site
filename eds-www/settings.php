@@ -211,7 +211,7 @@
                     deleteUserDialog.dialog('open');
                 }
 				
-            }
+            },
 			<?php } ?>
 			],
 			"ajax": {

@@ -64,7 +64,9 @@
 			},
             {
 				"data": "UID",
-                "render": function ( data, type, row ) {					
+                "render": function ( data, type, row ) {	
+					if(!data)
+						return '';
                     return renderUnits(data);
                 },
                 "targets": 1
@@ -72,6 +74,8 @@
 			{
 				"data": "TID",
                 "render": function ( data, type, row ) {
+					if(!data)
+						return '';
                     return renderTags(data);
                 },
                 "targets": 2
