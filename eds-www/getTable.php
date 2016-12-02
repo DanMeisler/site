@@ -96,8 +96,8 @@ if(sizeof($filter))
 	$searchTermsAll['DATE'] = $filter;
 }
 
-//valid data filtering (only if not admin)
-if($_SESSION['isAdmin'] == 'false')
+//valid GPS data filtering in history table(only if not admin)
+if($input['table']=='history' && $_SESSION['isAdmin'] == 'false')
 {
 	$searchTermsAll['LONGITUDE'] = array('$ne' => 'None');
 	$searchTermsAll['LATITUDE'] = array('$ne' => 'None');
