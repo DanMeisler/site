@@ -50,7 +50,7 @@
 		{
 			$username = $_REQUEST['username'];
 			$isAdmin = $_REQUEST['isAdmin'];
-			if (isset($username) && isset($password)){
+			if (isset($username) && isset($isAdmin)){
 				$collection->update(array("username" => $username), array('$set' => array('isAdmin' => $isAdmin)));
 			}
 		}
