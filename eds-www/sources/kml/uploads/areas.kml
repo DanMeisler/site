@@ -57,13 +57,6 @@
 					</outerBoundaryIs>
 				</Polygon>
 			</Placemark>
-			<Placemark>
-				<name>רחובות</name>
-				<styleUrl>#icon-22-nodesc</styleUrl>
-				<Point>
-					<coordinates>34.811272,31.892773,0.0</coordinates>
-				</Point>
-			</Placemark>
 		</Folder>
 		<Folder>
 			<name>יישובים</name>

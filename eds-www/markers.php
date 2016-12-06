@@ -26,7 +26,8 @@
 					"tags" => array(
 						'$push' => array(
 							'TID' => '$TID',
-							'MCUTMP' => '$MCUTMP'
+							'TBAT' => '$TBAT',
+							'TRSSI' => '$TRSSI'
 						)
 					),
 				),
@@ -45,7 +46,7 @@
 		array_push($info,$doc["_id"]["DATE"]);
 		$tags = array();
 		foreach ($doc["tags"] as $tag) {
-			array_push($tags,array($tag['TID'],$tag['MCUTMP']));
+			array_push($tags,array($tag['TID'],$tag['TBAT'],$tag['TRSSI']));
 		}
 		array_push($info,$tags);
 		array_push($units,array( $lat, $lon, $info));

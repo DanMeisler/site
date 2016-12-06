@@ -29,7 +29,7 @@
     $(document).ready( function () {
 		var renderUnits = function(data) {return data};
 		var renderTags = function(data) {return data};
-		var renderAreas = function(data) {return ''}; 
+		//var renderAreas = function(data) {return ''}; 
         var table = $('#currentState_table').DataTable({
 			"processing": true,
 			"serverSide": true,
@@ -92,60 +92,65 @@
 				"targets": 4
 			},
 			{
+				"data": "TRSSI",
+				"targets": 5
+			},
+			{
 				"data": "UBAT",
 				"render": function ( data, type, row ) {
                     return data + ' V';
                 },
-                "targets": 5
+                "targets": 6
 			},
 			{
 				"data": "MVOLIND",
-				"targets": 6
-			},
-			{
-				"data": "UCSQ",
 				"targets": 7
 			},
 			{
-				"data": "NETCON",
+				"data": "URSSI",
 				"targets": 8
 			},
 			{
-				"data": "MCUTMP",
+				"data": "NETCON",
 				"targets": 9
 			},
 			{
-				"data": "EXTTMP",
+				"data": "MCUTMP",
 				"targets": 10
+			},
+			{
+				"data": "EXTTMP",
+				"targets": 11
 			},
 			{
 				"render": function ( data, type, row ) {
                     return data + '°';
                 },
-                "targets": [4,9,10]
+                "targets": [4,10,11]
 			},
 			{
-				"render": function ( data, type, row ) {
+				/*"render": function ( data, type, row ) {
                     return renderAreas([parseFloat(row['LONGITUDE']),parseFloat(row['LATITUDE'])]);
-                },
-				"targets": 11
-			},
-			{
-				"data": "LOC",
+                },*/
+				"data": "AREA",
 				"targets": 12
 			},
 			{
-				"data": "LATITUDE",
+				"data": "LOC",
 				"targets": 13
+			},
+			{
+				"data": "LATITUDE",
+				"targets": 14
 			},
 
 			{
 				"data": "LONGITUDE",
-				"targets": 14
+				"targets": 15
 			},
 			{
 				"data": "SPEED",
-				"targets": 15
+				"targets": 16
 			},
 			{
 				"targets": -1,
@@ -156,7 +161,7 @@
 			},
 			<?php if($_SESSION["isAdmin"] == 'false') {?>
 			{
-				"targets": [9,10,12,13,14,15],
+				"targets": [10,11,13,14,15,16],
 				"visible": false,
 			},
 			<?php } ?>
@@ -219,7 +224,7 @@
 						};
 					}
 					});
-		$.get("/sources/kml/uploads/areas.kml", function(data){
+		/*$.get("/sources/kml/uploads/areas.kml", function(data){
 			var areas = [], coords, place, poly;
 			//loop through placemarks tags
 			$(data).find("Placemark").each(function(){
@@ -261,6 +266,7 @@
 					return '';	
 			};
 		});
+		*/
 		});
 </script>
 <div id="controls" style="position: fixed;top: 20;right: 20;">
@@ -291,9 +297,10 @@
             <th>Tag ID</th>
             <th>Tag voltage</th>
 			<th>Tag temp</th>
+			<th>Tag RSSI</th>
             <th>Unit voltage</th>
             <th>Main voltage indicate</th>
-            <th>GSM signal</th>
+            <th>Unit RSSI</th>
 			<th>Network host</th>
 			<th>Unit cpu temp</th>
 			<th>Unit sns temp</th>

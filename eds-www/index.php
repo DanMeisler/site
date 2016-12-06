@@ -72,7 +72,8 @@
 					for(i=0;i < tags.length; i++) {
 						text += '<br>';
 						text += 'Tag ID:' + renderTags(tags[i][0]) + '\t';
-						text += 'MCU_TEMPERATURE:'+ tags[i][1] + '\t';
+						text += 'TBAT:'+ tags[i][1] + '\t';
+						text += 'TRSSI:'+ tags[i][2] + '\t';
 					}
                     infowindow.setContent(text);
                     infowindow.open(map, marker);
