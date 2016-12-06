@@ -132,6 +132,7 @@
 				/*"render": function ( data, type, row ) {
                     return renderAreas([parseFloat(row['LONGITUDE']),parseFloat(row['LATITUDE'])]);
                 },*/
+				"data": "AREA",
 				"targets": 12
 			},
 			{
