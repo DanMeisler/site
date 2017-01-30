@@ -50,37 +50,32 @@
 	}
 	
     function setMarkers(map, locations) {
-	  var lat,lon,info,unitID,date,tags,text;
-      for (var i = 0; i < locations.length; i++) {
-		lat = locations[i][0];
-		lon = locations[i][1];
-		
-        var myLatLng = new google.maps.LatLng(lat, lon);
-        var marker = new google.maps.Marker({
-            position: myLatLng,
-            map: map
-        });
-		google.maps.event.addListener(marker, 'mousedown', (function (marker, i) {
-                return function () {
-					info = locations[i][2];
-					unitID = info[0];
-					date = info[1];
-					tags = info[2];
-					text = "<br>";
-					text += '<h3>Unit ID:' + renderUnits(unitID) + '</h3>';
-					text += '<h3>' + date + '</h3>';
-					for(i=0;i < tags.length; i++) {
+		var lat,lon,info,unitID,date,tags,text,marker,i;
+		for (var i = 0; i < locations.length; i++) {
+			info = locations[i][2];
+			unitID = info[0];
+			date = info[1];
+			tags = info[2];
+			text = "<br>";
+			text += '<h3>Unit ID:' + renderUnits(unitID) + '</h3>';
+			text += '<h3>' + date + '</h3>';
+			for(j=0;j < tags.length; j++) {
 						text += '<br>';
-						text += 'Tag ID:' + renderTags(tags[i][0]) + '\t';
-						text += 'TBAT:'+ tags[i][1] + '\t';
-						text += 'TRSSI:'+ tags[i][2] + '\t';
+						text += 'Tag ID:' + renderTags(tags[j][0]) + '\t';
+						text += 'TBAT:'+ tags[j][1] + '\t';
+						text += 'TRSSI:'+ tags[j][2] + '\t';
 					}
-                    infowindow.setContent(text);
-                    infowindow.open(map, marker);
-
-                }
-            })(marker, i));
-
+			var myinfowindow = new google.maps.InfoWindow({
+				content: text
+			});
+			marker = new google.maps.Marker({
+				position: new google.maps.LatLng(locations[i][0], locations[i][1]),
+				map: map,
+				infowindow: myinfowindow
+			});
+			google.maps.event.addListener(marker, 'mousedown', function() {
+				this.infowindow.open(map, this);
+				});
         arrMarkers.push(marker);
       }
     }
