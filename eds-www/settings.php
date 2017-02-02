@@ -298,16 +298,33 @@
 <div id="upload2">Upload</div>
 <div id="upload3">Upload</div>
 <?php if($_SESSION["isAdmin"] == 'true') {?>
+
 <br><br><br><br><br><br><br><br><br>
 <div id="removeTags" title="Remove tags"> 
 <form action="deleteTID.php" method="POST">
-      <label for="TID">TID to delete(write 'all' to delete all)</label>
+      <label for="TID">TID to delete(write 'all' to delete all):</label>
       <input type="text" name="TID" id="TID">
 	  <input type="submit">
-<form>
+</form>
 </div>
-<?php } ?>
+<br><br><br><br><br><br><br><br><br>
+<div id="updatePos" title="Update position"> 
+<form action="updatePosition.php" method="POST">
+      <label for="TID">TID to update:</label>
+      <input type="text" name="TID" id="TID">
+	  
+	  <label for="Longitude">Longitude:</label>
+      <input type="text" name="Longitude" id="Longitude">
+	  
+	  <label for="Latitude">Latitude:</label>
+      <input type="text" name="Latitude" id="Latitude">
+	  
+	  <input type="submit">
+</form>
+</div>
 <br><br><br><br><br><br><br><br><br><br><br><br>
+<?php } ?>
+
 <div style="position: fixed; width: 229px; height: 151px; bottom: 10;left: 10; background-image: url('sources/images/logo.png');">
 </div>
 
@@ -316,8 +333,10 @@
     <fieldset>
       <label for="username">Username</label>
       <input type="text" name="username" id="username">
+	  
       <label for="password">Password</label>
       <input type="password" name="password" id="password">
+	  
 	  <label for="isAdmin">isAdmin</label>
 	  <input type="checkbox" name="isAdmin" id="isAdmin">
     </fieldset>
