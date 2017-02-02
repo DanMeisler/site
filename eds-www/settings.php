@@ -297,7 +297,16 @@
 <div id="upload1">Upload</div>
 <div id="upload2">Upload</div>
 <div id="upload3">Upload</div>
-
+<?php if($_SESSION["isAdmin"] == 'true') {?>
+<br><br><br><br><br><br><br><br><br>
+<div id="removeTags" title="Remove tags"> 
+<form action="deleteTID.php" method="POST">
+      <label for="TID">TID to delete(write 'all' to delete all)</label>
+      <input type="text" name="TID" id="TID">
+	  <input type="submit">
+<form>
+</div>
+<?php } ?>
 <br><br><br><br><br><br><br><br><br><br><br><br>
 <div style="position: fixed; width: 229px; height: 151px; bottom: 10;left: 10; background-image: url('sources/images/logo.png');">
 </div>
