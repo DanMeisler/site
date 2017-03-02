@@ -51,7 +51,9 @@
 	
     function setMarkers(map, locations) {
 		var lat,lon,info,unitID,date,tags,text,marker,i;
+		var greenDot;
 		for (var i = 0; i < locations.length; i++) {
+			greenDot = false;
 			info = locations[i][2];
 			unitID = info[0];
 			date = info[1];
@@ -60,10 +62,15 @@
 			text += '<h3>Unit ID:' + renderUnits(unitID) + '</h3>';
 			text += '<h3>' + date + '</h3>';
 			for(j=0;j < tags.length; j++) {
-						text += '<br>';
-						text += 'Tag ID:' + renderTags(tags[j][0]) + '\t';
-						text += 'TBAT:'+ tags[j][1] + '\t';
-						text += 'TRSSI:'+ tags[j][2] + '\t';
+						if(tags[j][0] == "0000")
+							greenDot = true;
+						else
+						{
+							text += '<br>';
+							text += 'Tag ID:' + renderTags(tags[j][0]) + '\t';
+							text += 'TBAT:'+ tags[j][1] + '\t';
+							text += 'TRSSI:'+ tags[j][2] + '\t';
+						}
 					}
 			var myinfowindow = new google.maps.InfoWindow({
 				content: text
@@ -73,6 +80,10 @@
 				map: map,
 				infowindow: myinfowindow
 			});
+			if(greenDot)
+			{
+				marker.setIcon('./sources/images/green-dot.png')
+			}
 			google.maps.event.addListener(marker, 'mousedown', function() {
 				this.infowindow.open(map, this);
 				});
@@ -105,7 +116,7 @@
           position: myLatLng,
           map: map
       });
-	  marker.setIcon('./sources/images/yellow-dot.png')
+	  marker.setIcon('./sources/images/yellow-dot.png');
 	  <?php } ?>
 	  updateTheMarkers();
       setMarkers(map, markers);
